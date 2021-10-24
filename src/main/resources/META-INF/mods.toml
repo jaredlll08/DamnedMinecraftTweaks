@@ -1,0 +1,27 @@
+modLoader = "javafml"
+loaderVersion = "[36,)"
+license = "MIT"
+[[mods]]
+modId = "damnedminecrafttweaks"
+version = "${file.jarVersion}"
+displayName = "Damned Minecraft Tweaks"
+#updateJSONURL="https://change.me.example.invalid/updates.json"
+#displayURL="https://change.me.to.your.mods.homepage.example.invalid/"
+logoFile = "examplemod.png"
+credits = ""
+authors = "Jaredlll08, Amoooooooooo"
+description = '''
+Tweaks for the Damned Minecraft modpack
+'''
+[[dependencies.damnedminecrafttweaks]]
+modId = "forge"
+mandatory = true
+versionRange = "[36,)"
+ordering = "NONE"
+side = "BOTH"
+[[dependencies.damnedminecrafttweaks]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.16.5,1.17)"
+ordering = "NONE"
+side = "BOTH"

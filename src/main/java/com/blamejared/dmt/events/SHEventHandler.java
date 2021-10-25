@@ -14,7 +14,7 @@ import net.minecraftforge.fml.network.NetworkDirection;
 import net.silentchaos512.scalinghealth.capability.DifficultyAffectedCapability;
 import net.silentchaos512.scalinghealth.capability.DifficultySourceCapability;
 import net.silentchaos512.scalinghealth.client.ClientHandler;
-import net.silentchaos512.scalinghealth.utils.SHDifficulty;
+import net.silentchaos512.scalinghealth.utils.config.SHDifficulty;
 
 import java.util.List;
 

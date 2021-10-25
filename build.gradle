@@ -71,8 +71,8 @@ repositories {
 dependencies {
     minecraft 'net.minecraftforge:forge:1.16.5-36.2.8'
 
-    implementation fg.deobf("curse.maven:scaling-health-248027:3240365")
-    implementation fg.deobf("curse.maven:silent-lib-242998:3235738")
+    implementation fg.deobf("curse.maven:scaling-health-248027:3348269")
+    implementation fg.deobf("curse.maven:silent-lib-242998:3385768")
 
     implementation fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.16.5:7.1.2.454")
 

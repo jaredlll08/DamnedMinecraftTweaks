@@ -6,7 +6,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraftforge.fml.common.thread.EffectiveSide;
 import net.silentchaos512.scalinghealth.capability.DifficultyAffectedCapability;
 import net.silentchaos512.scalinghealth.capability.DifficultySourceCapability;
-import net.silentchaos512.scalinghealth.utils.SHDifficulty;
+import net.silentchaos512.scalinghealth.utils.config.SHDifficulty;
 import org.openzen.zencode.java.ZenCodeType;
 
 @ZenRegister

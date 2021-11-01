@@ -1,6 +1,5 @@
 package com.blamejared.dmt.mixin;
 
-import com.blamejared.dmt.DamnedMinecraftTweaks;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.robertx22.age_of_exile.uncommon.utilityclasses.HealthUtils;
@@ -16,7 +15,6 @@ import org.spongepowered.asm.mixin.Overwrite;
 @Mixin(BarDisplay.class)
 public class ToroHealthMixin {
     private Minecraft mc;
-    // Why am I doing it this way? https://discord.com/channels/176780432371744769/750505199415590942/902479676671393852
     /**
     *
     @author Witixin

@@ -2,11 +2,7 @@ package com.blamejared.dmt.compat.crt;
 
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.dmt.events.SHClientEventHandler;
-import com.robertx22.age_of_exile.saveclasses.stat_soul.StatSoulData;
-import com.robertx22.age_of_exile.saveclasses.stat_soul.StatSoulItem;
-import com.robertx22.age_of_exile.uncommon.datasaving.StackSaving;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.thread.EffectiveSide;
 import net.silentchaos512.scalinghealth.capability.DifficultyAffectedCapability;
 import net.silentchaos512.scalinghealth.capability.DifficultySourceCapability;

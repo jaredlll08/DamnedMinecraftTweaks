@@ -1,6 +1,5 @@
 package com.blamejared.dmt.mixin;
 
-import com.robertx22.age_of_exile.mixin_methods.OnItemInteract;
 import net.minecraft.item.Item;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ResourceLocation;
@@ -8,7 +7,6 @@ import net.minecraftforge.common.Tags;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Set;

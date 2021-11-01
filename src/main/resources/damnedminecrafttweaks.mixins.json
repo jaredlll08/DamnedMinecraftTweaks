@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.7",
+  "package": "com.blamejared.dmt.mixin",
+  "refmap" : "damnedminecrafttweaks.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "ToroHealthMixin",
+    "SmithingMixin",
+    "OptionalMixin",
+    "SoulGearMixin"
+  ]
+}

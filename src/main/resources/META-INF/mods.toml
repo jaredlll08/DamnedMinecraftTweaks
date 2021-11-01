@@ -25,3 +25,32 @@ mandatory = true
 versionRange = "[1.16.5,1.17)"
 ordering = "NONE"
 side = "BOTH"
+
+[[dependencies.damnedminecrafttweaks]]
+modId = "bettersmithing"
+mandatory = true
+versionRange = "[1.2.2,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.damnedminecrafttweaks]]
+modId = "crafttweaker"
+mandatory = true
+versionRange = "[7.1.2.451,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.damnedminecrafttweaks]]
+modId = "torohealth"
+mandatory = true
+versionRange = "[4,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.damnedminecrafttweaks]]
+modId = "mmorpg" #mine and slash
+mandatory = true
+versionRange = "[3.0.1,)"
+ordering = "NONE"
+side = "BOTH"
+

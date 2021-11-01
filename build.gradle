@@ -1,26 +1,35 @@
 buildscript {
     repositories {
         maven { url = 'https://maven.minecraftforge.net' }
+        maven { url = "https://repo.spongepowered.org/maven" }
+        flatDir {
+            dirs 'lib'
+        }
+        jcenter()
         mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7.+'
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
+apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'maven-publish'
 
-version = '1.0.0'
+version = '1.0.5'
 group = 'com.blamejared.damnedminecrafttweaks'
-archivesBaseName = 'DamnedMinecraftTweaks'
+archivesBaseName = 'DamnedMinecraftTweaks-1.16.5'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(8)
 
 minecraft {
+    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
     mappings channel: 'official', version: '1.16.5'
     runs {
         client {
+            arg "-mixin.config=damnedminecrafttweaks.mixins.json"
             workingDirectory project.file('run')
             mods {
                 damnedminecrafttweaks {
@@ -59,6 +68,9 @@ repositories {
             includeGroup "curse.maven"
         }
     }
+    flatDir {
+        dirs "lib"
+    }
     maven {
         url 'https://maven.blamejared.com'
         content {
@@ -76,8 +88,17 @@ dependencies {
 
     implementation fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.16.5:7.1.2.454")
 
-}
 
+    annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
+    implementation fg.deobf(fileTree('lib') { include '*.jar' })
+    //Cursemaven wasn't working properly with Mine And Slash so I just did this
+
+}
+mixin {
+
+    add sourceSets.main, 'damnedminecrafttweaks.refmap.json'
+
+}
 jar {
     manifest {
         attributes([
@@ -87,7 +108,8 @@ jar {
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : "${version}",
                 "Implementation-Vendor"   : "BlameJared",
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                "MixinConfigs": "damnedminecrafttweaks.mixins.json"
         ])
     }
 }

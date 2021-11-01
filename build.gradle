@@ -2,9 +2,6 @@ buildscript {
     repositories {
         maven { url = 'https://maven.minecraftforge.net' }
         maven { url = "https://repo.spongepowered.org/maven" }
-        flatDir {
-            dirs 'lib'
-        }
         jcenter()
         mavenCentral()
     }
@@ -68,9 +65,6 @@ repositories {
             includeGroup "curse.maven"
         }
     }
-    flatDir {
-        dirs "lib"
-    }
     maven {
         url 'https://maven.blamejared.com'
         content {
@@ -86,12 +80,16 @@ dependencies {
     implementation fg.deobf("curse.maven:scaling-health-248027:3348269")
     implementation fg.deobf("curse.maven:silent-lib-242998:3385768")
 
+    implementation fg.deobf("curse.maven:mine-and-slash-reloaded-306575:3505670")
+    implementation fg.deobf("curse.maven:library-of-exile-398780:3500134")
+
+    implementation fg.deobf("curse.maven:torohealth-damage-indicators-245733:3144151")
+
+    implementation fg.deobf("curse.maven:better-smithing-517972:3457290")
+
     implementation fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.16.5:7.1.2.454")
 
-
     annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
-    implementation fg.deobf(fileTree('lib') { include '*.jar' })
-    //Cursemaven wasn't working properly with Mine And Slash so I just did this
 
 }
 mixin {

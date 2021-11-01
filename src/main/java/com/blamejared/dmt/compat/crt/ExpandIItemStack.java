@@ -19,7 +19,7 @@ public class ExpandIItemStack {
         if (soul.getInternal().getItem() instanceof StatSoulItem){
             StatSoulData data = StackSaving.STAT_SOULS.loadFrom(soul.getInternal());
 
-            if (data != null) {
+            if (data != null && StackSaving.GEARS.loadFrom(soul.getInternal()) == null) {
                 data.createGearData().saveToStack(soul.getInternal());
             }
         }

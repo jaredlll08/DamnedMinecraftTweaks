@@ -7,6 +7,7 @@
   "mixins": [
     "ToroHealthMixin",
     "SmithingMixin",
-    "SoulGearMixin"
+    "SoulGearMixin",
+    "TooltipMethodMixin"
   ]
 }

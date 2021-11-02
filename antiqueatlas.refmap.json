@@ -1,0 +1,60 @@
+{
+  "mappings": {
+    "hunternif/mc/impl/atlas/mixin/dev/MixinCartographyTableContainerSlot": {
+      "net.minecraft.inventory.container.CartographyContainer$4": "net/minecraft/inventory/container/CartographyContainer$4",
+      "isItemValid": "func_75214_a(Lnet/minecraft/item/ItemStack;)Z"
+    },
+    "hunternif/mc/impl/atlas/mixin/prod/MixinCartographyTableContainerSlot": {
+      "net.minecraft.inventory.container.CartographyContainer$4": "net/minecraft/inventory/container/CartographyContainer$4",
+      "isItemValid": "func_75214_a(Lnet/minecraft/item/ItemStack;)Z"
+    },
+    "hunternif/mc/impl/atlas/mixin/MixinCartographyContainer": {
+      "transferStackInSlot": "Lnet/minecraft/inventory/container/CartographyContainer;func_82846_b(Lnet/minecraft/entity/player/PlayerEntity;I)Lnet/minecraft/item/ItemStack;"
+    },
+    "hunternif/mc/impl/atlas/mixin/HeldItemRendererMixin": {
+      "Lnet/minecraft/item/ItemStack;isEmpty()Z": "Lnet/minecraft/item/ItemStack;func_190926_b()Z",
+      "renderItemInFirstPerson(Lnet/minecraft/client/entity/player/AbstractClientPlayerEntity;FFLnet/minecraft/util/Hand;FLnet/minecraft/item/ItemStack;FLcom/mojang/blaze3d/matrix/MatrixStack;Lnet/minecraft/client/renderer/IRenderTypeBuffer;I)V": "Lnet/minecraft/client/renderer/FirstPersonRenderer;func_228405_a_(Lnet/minecraft/client/entity/player/AbstractClientPlayerEntity;FFLnet/minecraft/util/Hand;FLnet/minecraft/item/ItemStack;FLcom/mojang/blaze3d/matrix/MatrixStack;Lnet/minecraft/client/renderer/IRenderTypeBuffer;I)V"
+    },
+    "hunternif/mc/impl/atlas/mixin/prod/MixinCartographyTableContainerResultSlot": {
+      "net.minecraft.inventory.container.CartographyContainer$5": "net/minecraft/inventory/container/CartographyContainer$5",
+      "onTake": "func_190901_a(Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;"
+    },
+    "hunternif/mc/impl/atlas/mixin/dev/MixinCartographyTableContainerResultSlot": {
+      "net.minecraft.inventory.container.CartographyContainer$5": "net/minecraft/inventory/container/CartographyContainer$5",
+      "onTake": "func_190901_a(Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;"
+    },
+    "hunternif/mc/impl/atlas/mixin/MixinPlayerEntityDeath": {
+      "onDeath": "func_70645_a(Lnet/minecraft/util/DamageSource;)V"
+    }
+  },
+  "data": {
+    "searge": {
+      "hunternif/mc/impl/atlas/mixin/dev/MixinCartographyTableContainerSlot": {
+        "net.minecraft.inventory.container.CartographyContainer$4": "net/minecraft/inventory/container/CartographyContainer$4",
+      "isItemValid": "func_75214_a(Lnet/minecraft/item/ItemStack;)Z"
+      },
+      "hunternif/mc/impl/atlas/mixin/prod/MixinCartographyTableContainerSlot": {
+        "net.minecraft.inventory.container.CartographyContainer$4": "net/minecraft/inventory/container/CartographyContainer$4",
+      "isItemValid": "func_75214_a(Lnet/minecraft/item/ItemStack;)Z"
+      },
+      "hunternif/mc/impl/atlas/mixin/MixinCartographyContainer": {
+        "transferStackInSlot": "Lnet/minecraft/inventory/container/CartographyContainer;func_82846_b(Lnet/minecraft/entity/player/PlayerEntity;I)Lnet/minecraft/item/ItemStack;"
+      },
+      "hunternif/mc/impl/atlas/mixin/HeldItemRendererMixin": {
+        "Lnet/minecraft/item/ItemStack;isEmpty()Z": "Lnet/minecraft/item/ItemStack;func_190926_b()Z",
+        "renderItemInFirstPerson(Lnet/minecraft/client/entity/player/AbstractClientPlayerEntity;FFLnet/minecraft/util/Hand;FLnet/minecraft/item/ItemStack;FLcom/mojang/blaze3d/matrix/MatrixStack;Lnet/minecraft/client/renderer/IRenderTypeBuffer;I)V": "Lnet/minecraft/client/renderer/FirstPersonRenderer;func_228405_a_(Lnet/minecraft/client/entity/player/AbstractClientPlayerEntity;FFLnet/minecraft/util/Hand;FLnet/minecraft/item/ItemStack;FLcom/mojang/blaze3d/matrix/MatrixStack;Lnet/minecraft/client/renderer/IRenderTypeBuffer;I)V"
+      },
+      "hunternif/mc/impl/atlas/mixin/prod/MixinCartographyTableContainerResultSlot": {
+        "net.minecraft.inventory.container.CartographyContainer$5": "net/minecraft/inventory/container/CartographyContainer$5",
+      "onTake": "func_190901_a(Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;"
+      },
+      "hunternif/mc/impl/atlas/mixin/dev/MixinCartographyTableContainerResultSlot": {
+        "net.minecraft.inventory.container.CartographyContainer$5": "net/minecraft/inventory/container/CartographyContainer$5",
+      "onTake": "func_190901_a(Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;"
+      },
+      "hunternif/mc/impl/atlas/mixin/MixinPlayerEntityDeath": {
+        "onDeath": "func_70645_a(Lnet/minecraft/util/DamageSource;)V"
+      }
+    }
+  }
+}

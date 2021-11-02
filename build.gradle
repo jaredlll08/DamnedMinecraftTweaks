@@ -33,6 +33,11 @@ minecraft {
                     source sourceSets.main
                 }
             }
+            arg "-mixin.config=damnedminecrafttweaks.mixins.json"
+            // This makes dependencies with mixins work
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
+            // This makes dependencies with mixins work
         }
 
         server {
@@ -42,6 +47,11 @@ minecraft {
                     source sourceSets.main
                 }
             }
+            arg "-mixin.config=damnedminecrafttweaks.mixins.json"
+            // This makes dependencies with mixins work
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
+            // This makes dependencies with mixins work
         }
 
         data {
@@ -54,6 +64,10 @@ minecraft {
             }
         }
     }
+}
+
+mixin {
+    add sourceSets.main, "damnedminecrafttweaks.refmap.json"
 }
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
@@ -71,31 +85,42 @@ repositories {
             includeGroup "com.blamejared.crafttweaker"
         }
     }
-
+    flatDir {
+        dirs "libs"
+    }
 }
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.16.5-36.2.8'
 
-    implementation fg.deobf("curse.maven:scaling-health-248027:3348269")
-    implementation fg.deobf("curse.maven:silent-lib-242998:3385768")
+    implementation fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.16.5:7.1.2.454")
 
-    implementation fg.deobf("curse.maven:mine-and-slash-reloaded-306575:3505670")
-    implementation fg.deobf("curse.maven:library-of-exile-398780:3500134")
+    implementation fg.deobf("curse.maven:scaling-health-248027:3348269")
+
+    implementation fg.deobf("curse.maven:silent-lib-242998:3385768")
 
     implementation fg.deobf("curse.maven:torohealth-damage-indicators-245733:3144151")
 
+    implementation fg.deobf("curse.maven:attributefix-280510:3232225")
+
     implementation fg.deobf("curse.maven:better-smithing-517972:3457290")
 
-    implementation fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.16.5:7.1.2.454")
+    //Antique Atlas
+    implementation fg.deobf("curse.maven:cloth-348521:3311352")
+    //Uses a flat dir as a fix since the refmap doesn't want to play nice
+    //(It's written in MCP where this mod uses MOJ maps)
+    //You will have to utilize the modified refmap that will be provided
+    //https://www.curseforge.com/minecraft/mc-mods/antique-atlas/files
+    implementation fg.deobf("ignore:antiqueatlas:6.0.1-forge-mc1.16.5")
+
+    //Mine and Slash
+    implementation fg.deobf("curse.maven:divinemisisons-495974:3500133")
+    implementation fg.deobf("curse.maven:curiosapi-309927:3456953")
+    implementation fg.deobf("curse.maven:dungeonsexile-404445:3500145")
+    implementation fg.deobf("curse.maven:libraryexile-398780:3500134")
+    implementation fg.deobf("curse.maven:mineslash-306575:3505670")
 
     annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
-
-}
-mixin {
-
-    add sourceSets.main, 'damnedminecrafttweaks.refmap.json'
-
 }
 jar {
     manifest {

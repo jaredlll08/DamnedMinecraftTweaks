@@ -1,5 +1,6 @@
 package com.blamejared.dmt;
 
+import com.blamejared.dmt.events.MineTweaks;
 import com.blamejared.dmt.events.SHEventHandler;
 import com.blamejared.dmt.network.PacketHandler;
 import net.minecraftforge.common.MinecraftForge;
@@ -18,5 +19,6 @@ public class DamnedMinecraftTweaks {
     
     private void setup(final FMLCommonSetupEvent event) {
         MinecraftForge.EVENT_BUS.register(new SHEventHandler());
+        MinecraftForge.EVENT_BUS.register(new MineTweaks());
     }
 }

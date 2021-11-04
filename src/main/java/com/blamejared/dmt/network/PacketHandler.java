@@ -1,6 +1,8 @@
 package com.blamejared.dmt.network;
 
+import com.blamejared.dmt.DamnedMinecraftTweaks;
 import com.blamejared.dmt.events.SHClientEventHandler;
+import com.blamejared.dmt.network.messages.MessageDifficultyLevel;
 import com.blamejared.dmt.network.messages.MessagePlayerDifficulty;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.network.NetworkEvent;
@@ -23,6 +25,27 @@ public class PacketHandler {
         }, packetBuffer -> new MessagePlayerDifficulty(packetBuffer.readUUID(), packetBuffer.readFloat()), (messageCopy, contextSupplier) -> andHandling(contextSupplier, () -> {
             SHClientEventHandler.DIFFICULTY_MAP.put(messageCopy.getPlayerUUID(), messageCopy.getDifficulty());
         }));
+
+        CHANNEL.registerMessage(ID++,
+                MessageDifficultyLevel.Request.class,
+                (message, packetBuffer) -> {},
+                packetBuffer -> new MessageDifficultyLevel.Request(),
+                (messageCopy, contextSupplier) -> andHandling(contextSupplier, () -> DamnedMinecraftTweaks.PROXY.onDifficultyLevelRequest(messageCopy, contextSupplier.get()))
+        );
+
+        CHANNEL.registerMessage(ID++,
+                MessageDifficultyLevel.Return.class,
+                (message, packetBuffer) -> {
+                    packetBuffer.writeBlockPos(message.spawn);
+                    packetBuffer.writeInt(message.minLevel);
+                    packetBuffer.writeInt(message.maxLevel);
+                    packetBuffer.writeInt(message.minLevelArea);
+                    packetBuffer.writeInt(message.mobLevelPerDistance);
+                    packetBuffer.writeDouble(message.cordinateScale);
+                },
+                packetBuffer -> new MessageDifficultyLevel.Return(packetBuffer.readBlockPos(), packetBuffer.readInt(), packetBuffer.readInt(), packetBuffer.readInt(), packetBuffer.readInt(), packetBuffer.readDouble()),
+                (messageCopy, contextSupplier) -> andHandling(contextSupplier, () -> DamnedMinecraftTweaks.PROXY.onDifficultyLevelReturn(messageCopy, contextSupplier.get()))
+        );
     }
     
     private static void andHandling(final Supplier<NetworkEvent.Context> contextSupplier, final Runnable enqueuedWork) {

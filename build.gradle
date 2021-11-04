@@ -15,7 +15,7 @@ apply plugin: 'eclipse'
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'maven-publish'
 
-version = '1.0.5'
+version = '1.0.6'
 group = 'com.blamejared.damnedminecrafttweaks'
 archivesBaseName = 'DamnedMinecraftTweaks-1.16.5'
 

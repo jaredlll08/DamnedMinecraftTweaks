@@ -28,8 +28,11 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import java.util.List;
 
-public class MineTweaks {
-    public MineTweaks() {
+/**
+ * Events relating specifically to Mine Slash
+ */
+public class MSClientEventHandler {
+    public MSClientEventHandler() {
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)

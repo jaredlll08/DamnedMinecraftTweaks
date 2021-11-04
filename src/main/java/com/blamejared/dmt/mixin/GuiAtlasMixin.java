@@ -21,7 +21,7 @@ public class GuiAtlasMixin {
 
     @Shadow private int mapOffsetY;
 
-    @Inject(at = @At(value = "INVOKE", target = "hunternif/mc/impl/atlas/client/TileRenderIterator.iterator()Ljava/util/Iterator;"), method = "render", remap = false, locals = LocalCapture.CAPTURE_FAILSOFT)
+    @Inject(at = @At(value = "INVOKE", target = "hunternif/mc/impl/atlas/client/TileRenderIterator.iterator()Ljava/util/Iterator;"), method = "render", locals = LocalCapture.CAPTURE_FAILSOFT)
     private void onRender(MatrixStack matrices, int mouseX, int mouseY, float par3, CallbackInfo ci, long currentMillis, long deltaMillis, int mapStartX, int mapStartZ, int mapEndX, int mapEndZ, int mapStartScreenX, int mapStartScreenY, TileRenderIterator tiles, int v) {
         AAClientEventHandler.mapOffsetX = mapOffsetX;
         AAClientEventHandler.mapOffsetY = mapOffsetY;

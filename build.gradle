@@ -15,7 +15,22 @@ apply plugin: 'eclipse'
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'maven-publish'
 
-version = '1.0.6'
+def versionPropsFile = file('version.properties')
+
+if (versionPropsFile.canRead()) {
+    def Properties versionProps = new Properties()
+
+    versionProps.load(new FileInputStream(versionPropsFile))
+
+    def code = versionProps['VERSION_CODE'].toInteger() + 1
+
+    versionProps['VERSION_CODE']=code.toString()
+    versionProps.store(versionPropsFile.newWriter(), null)
+    version = "1.16.5" + "-" + "1.16.5" + "." + code.toString()
+}
+else {
+    throw new GradleException("Could not read version.properties!")
+}
 group = 'com.blamejared.damnedminecrafttweaks'
 archivesBaseName = 'DamnedMinecraftTweaks-1.16.5'
 

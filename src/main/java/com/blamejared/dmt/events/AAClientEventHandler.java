@@ -39,7 +39,12 @@ public class AAClientEventHandler {
             int lvl = (int)(minLevel + (distance - minLevelArea) / mobLevelPerDistance);
             level = MathHelper.clamp(lvl, minLevel, maxLevel);
         }
-
-        return ColorHelper.PackedColor.color(255 * level / maxLevel, 255, 0, 0);
+        if (level < (maxLevel * 0.3)){
+            return ColorHelper.PackedColor.color(Math.min(255 * level / maxLevel, 165), 0, 125, 255);
+        } else if (level < (maxLevel * 0.6 )){
+            return ColorHelper.PackedColor.color(Math.min(255 * level / maxLevel, 165), 0, 255, 125);
+        } else {
+            return ColorHelper.PackedColor.color(Math.min(255 * level / maxLevel, 165), 255, 0, 165);
+        }
     }
 }

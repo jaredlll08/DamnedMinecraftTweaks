@@ -1,5 +1,6 @@
 package com.blamejared.dmt;
 
+import com.blamejared.dmt.compat.crt.BeamObject;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
@@ -24,17 +25,16 @@ public class TweakBeamRenderer extends RenderState {
         super(string, run, run2);
     }
 
-    public static void renderTweakBeam(MatrixStack stack, IRenderTypeBuffer buffer, float pticks, long worldtime, ItemEntity item) {
+    public static void renderTweakBeam(MatrixStack stack, IRenderTypeBuffer buffer, float pticks, long worldtime, ItemEntity item, BeamObject beamObject) {
         float beamRadius = 0.05f * 0.65f;
         float glowRadius = beamRadius + (beamRadius * 0.2f);
         float beamAlpha = 1.0f;
         float beamHeight = 0.25f;
         float yOffset = 0.0f;
 
-        Color color = getItemColor(item);
-        float R = color.getRed() / 255f;
-        float G = color.getGreen() / 255f;
-        float B = color.getBlue() / 255f;
+        float R = beamObject.getRed() / 255f;
+        float G = beamObject.getGreen() / 255f;
+        float B = beamObject.getBlue() / 255f;
 
         //I will rewrite the beam rendering code soon! I promise!
 
@@ -47,9 +47,9 @@ public class TweakBeamRenderer extends RenderState {
         stack.translate(0, yOffset, 0);
         stack.translate(0, 1, 0);
         stack.mulPose(Vector3f.XP.rotationDegrees(180));
-        renderPart(stack, buffer.getBuffer(TWEAK_BEAM_RENDERTYPE), R, G, B, beamAlpha, beamHeight, 0.0F, beamRadius, beamRadius, 0.0F, -beamRadius, 0.0F, 0.0F, -beamRadius);
+        renderPart(stack, buffer.getBuffer(TWEAK_BEAM_RENDERTYPE), R, G, B, beamObject.getAlpha(), beamObject.getHeight(), beamObject.getRadius_1(), beamObject.getRadius_2(), beamObject.getRadius_3(), beamObject.getRadius_4(), beamObject.getRadius_5(), beamObject.getRadius_6(), beamObject.getRadius_7(), beamObject.getRadius_8());
         stack.mulPose(Vector3f.XP.rotationDegrees(-180));
-        renderPart(stack, buffer.getBuffer(TWEAK_BEAM_RENDERTYPE), R, G, B, beamAlpha, beamHeight, 0.0F, beamRadius, beamRadius, 0.0F, -beamRadius, 0.0F, 0.0F, -beamRadius);
+        renderPart(stack, buffer.getBuffer(TWEAK_BEAM_RENDERTYPE), R, G, B, beamObject.getAlpha(), beamObject.getHeight(), beamObject.getRadius_1(), beamObject.getRadius_2(), beamObject.getRadius_3(), beamObject.getRadius_4(), beamObject.getRadius_5(), beamObject.getRadius_6(), beamObject.getRadius_7(), beamObject.getRadius_8());
         stack.popPose();
 
         //Render glow around main beam
@@ -61,27 +61,6 @@ public class TweakBeamRenderer extends RenderState {
         renderPart(stack, buffer.getBuffer(TWEAK_BEAM_RENDERTYPE), R, G, B, beamAlpha * 0.4f, beamHeight, -glowRadius, -glowRadius, glowRadius, -glowRadius, -beamRadius, glowRadius, glowRadius, glowRadius);
 
         stack.popPose();
-    }
-    // Copied from lootbeams code
-    private static Color getItemColor(ItemEntity item) {
-
-        try {
-
-            //From Config Overrides
-
-            //From NBT
-
-            //From Name
-
-            //From Rarity
-            if (item.getItem().getRarity().color != null) {
-                return new Color(item.getItem().getRarity().color.getColor());
-            } else {
-                return Color.WHITE;
-            }
-        } catch (Exception e) {
-            return Color.WHITE;
-        }
     }
     private static void renderPart(MatrixStack stack, IVertexBuilder builder, float red, float green, float blue, float alpha, float height, float radius_1, float radius_2, float radius_3, float radius_4, float radius_5, float radius_6, float radius_7, float radius_8) {
         MatrixStack.Entry matrixentry = stack.last();

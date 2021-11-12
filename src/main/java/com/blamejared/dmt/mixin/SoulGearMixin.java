@@ -85,7 +85,7 @@ public class SoulGearMixin {
                 if (gear == null) {
                     return;
                 }
-                LocReqContext ctx = new LocReqContext(stack, cursor);
+                LocReqContext ctx = new LocReqContext(player, stack, cursor);
                 if (ctx.effect.canItemBeModified(ctx)) {
                     ItemStack result = ctx.effect.modifyItem(ctx).stack;
 

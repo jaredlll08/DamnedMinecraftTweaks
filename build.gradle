@@ -133,7 +133,7 @@ dependencies {
     implementation fg.deobf("curse.maven:curiosapi-309927:3456953")
     implementation fg.deobf("curse.maven:dungeonsexile-404445:3500145")
     implementation fg.deobf("curse.maven:libraryexile-398780:3500134")
-    implementation fg.deobf("curse.maven:mineslash-306575:3505670")
+    implementation fg.deobf("curse.maven:mineslash-306575:3519523")
 
     annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
 }

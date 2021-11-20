@@ -1,6 +1,7 @@
 package com.blamejared.dmt.mixin;
 
 import com.blamejared.dmt.events.AAClientEventHandler;
+import com.blamejared.dmt.events.MSClientEventHandler;
 import com.blamejared.dmt.network.PacketHandler;
 import com.blamejared.dmt.network.messages.MessageDifficultyLevel;
 import com.mojang.blaze3d.matrix.MatrixStack;
@@ -27,9 +28,9 @@ import static com.blamejared.dmt.events.AAClientEventHandler.*;
 public abstract class TileTextureMixin {
     @Inject(at = @At(value = "HEAD"), method = "drawSubTile", remap = false)
     private void onDrawEnd(MatrixStack matrices, SubTile subtile, int tileHalfSize, CallbackInfo ci) {
-        int color = AAClientEventHandler.getColor(subtile.x, subtile.y);
-        AbstractGui.fill(matrices, subtile.x * tileHalfSize, subtile.y * tileHalfSize, subtile.x * tileHalfSize + tileHalfSize, subtile.y * tileHalfSize + tileHalfSize, color);
+        if(MSClientEventHandler.showOverlay) {
+            int color = AAClientEventHandler.getColor(subtile.x, subtile.y);
+            AbstractGui.fill(matrices, subtile.x * tileHalfSize, subtile.y * tileHalfSize, subtile.x * tileHalfSize + tileHalfSize, subtile.y * tileHalfSize + tileHalfSize, color);
+        }
     }
-
-
 }

@@ -32,6 +32,8 @@ import java.util.List;
  * Events relating specifically to Mine Slash
  */
 public class MSClientEventHandler {
+    public static boolean showOverlay = false;
+
     public MSClientEventHandler() {
     }
 
@@ -99,7 +101,7 @@ public class MSClientEventHandler {
 
             if (stack.hasTag()) {
 
-                ICommonDataItem data = ICommonDataItem.load(stack);
+                ICommonDataItem<?> data = ICommonDataItem.load(stack);
 
                 if (data != null) {
                     data.BuildTooltip(ctx);
@@ -127,7 +129,6 @@ public class MSClientEventHandler {
                         .getItem();
                 currency.addToTooltip(tooltip);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }

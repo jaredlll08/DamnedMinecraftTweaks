@@ -129,11 +129,11 @@ dependencies {
     implementation fg.deobf("ignore:antiqueatlas:6.0.1-forge-mc1.16.5")
 
     //Mine and Slash
-    implementation fg.deobf("curse.maven:divinemisisons-495974:3500133")
+    implementation fg.deobf("curse.maven:divinemisisons-495974:3541524")
     implementation fg.deobf("curse.maven:curiosapi-309927:3456953")
-    implementation fg.deobf("curse.maven:dungeonsexile-404445:3520847")
-    implementation fg.deobf("curse.maven:libraryexile-398780:3500134")
-    implementation fg.deobf("curse.maven:mineslash-306575:3526513")
+    implementation fg.deobf("curse.maven:dungeonsexile-404445:3541529")
+    implementation fg.deobf("curse.maven:libraryexile-398780:3557138")
+    implementation fg.deobf("curse.maven:mineslash-306575:3561502")
 
     annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
 }

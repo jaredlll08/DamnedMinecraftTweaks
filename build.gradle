@@ -120,7 +120,7 @@ dependencies {
 
     implementation fg.deobf("curse.maven:better-smithing-517972:3457290")
 
-    implementation fg.deobf("curse.maven:lycanitesmobs-224770:3516607")
+    compileOnly fg.deobf("curse.maven:lycanitesmobs-224770:3516607")
 
     //Antique Atlas
     implementation fg.deobf("curse.maven:cloth-348521:3311352")

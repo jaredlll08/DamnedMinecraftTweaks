@@ -1,9 +1,7 @@
 package com.blamejared.dmt.network;
 
 import com.blamejared.dmt.DamnedMinecraftTweaks;
-import com.blamejared.dmt.events.SHClientEventHandler;
 import com.blamejared.dmt.network.messages.MessageDifficultyLevel;
-import com.blamejared.dmt.network.messages.MessagePlayerDifficulty;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.network.NetworkEvent;
 import net.minecraftforge.fml.network.NetworkRegistry;
@@ -19,12 +17,7 @@ public class PacketHandler {
     
     public static void init() {
         
-        CHANNEL.registerMessage(ID++, MessagePlayerDifficulty.class, (message, packetBuffer) -> {
-            packetBuffer.writeUUID(message.getPlayerUUID());
-            packetBuffer.writeFloat(message.getDifficulty());
-        }, packetBuffer -> new MessagePlayerDifficulty(packetBuffer.readUUID(), packetBuffer.readFloat()), (messageCopy, contextSupplier) -> andHandling(contextSupplier, () -> {
-            SHClientEventHandler.DIFFICULTY_MAP.put(messageCopy.getPlayerUUID(), messageCopy.getDifficulty());
-        }));
+
 
         CHANNEL.registerMessage(ID++,
                 MessageDifficultyLevel.Request.class,

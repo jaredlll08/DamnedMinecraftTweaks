@@ -3,7 +3,6 @@ package com.blamejared.dmt;
 import com.blamejared.dmt.events.AAClientEventHandler;
 import com.blamejared.dmt.events.AAEventHandler;
 import com.blamejared.dmt.events.MSClientEventHandler;
-import com.blamejared.dmt.events.SHEventHandler;
 import com.blamejared.dmt.network.ClientProxy;
 import com.blamejared.dmt.network.CommonProxy;
 import com.blamejared.dmt.network.PacketHandler;
@@ -26,7 +25,6 @@ public class DamnedMinecraftTweaks {
     }
     
     private void setup(final FMLCommonSetupEvent event) {
-        MinecraftForge.EVENT_BUS.register(new SHEventHandler());
         MinecraftForge.EVENT_BUS.register(new AAEventHandler());
     }
 

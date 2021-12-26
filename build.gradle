@@ -106,7 +106,7 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.5-36.2.8'
+    minecraft 'net.minecraftforge:forge:1.16.5-36.2.20'
 
     implementation fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.16.5:7.1.2.454")
 

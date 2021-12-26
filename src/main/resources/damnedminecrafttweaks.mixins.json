@@ -8,6 +8,7 @@
     "GearTooltipUtilsMixin",
     "SmithingMixin",
     "SoulGearMixin",
+    "StatSoulItemMixin",
     "StructureSpawnLocationMixin",
     "TooltipMethodMixin",
     "ToroHealthMixin"

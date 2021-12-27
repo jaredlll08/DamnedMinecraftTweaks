@@ -11,6 +11,7 @@
     "StatSoulItemMixin",
     "StructureSpawnLocationMixin",
     "TooltipMethodMixin",
+    "TooltipUtilsMixin",
     "ToroHealthMixin"
   ],
   "client": [

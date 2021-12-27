@@ -1,4 +1,10 @@
 {
   "gui.damnedminecrafttweaks.toggleOverlay": "Toggle difficulty overlay",
-  "dmctweaks.morphstone.name": "Morphstone"
+  "dmctweaks.morphstone.name": "Morphstone",
+  "dmctweaks.tooltip.geartype": "",
+  "dmctweaks.tooltip.itemtier": "Item Tier: ",
+  "dmctweaks.tooltip.rarityprefix": "Rarity: ",
+  "dmctweaks.tooltip.levelreq": "Level Requirement: ",
+  "dmctweaks.tooltip.infusesontogear": "Infuses stats into empty gear",
+  "dmctweaks.tooltip.dragtouse": "Hold over item and click to use"
 }

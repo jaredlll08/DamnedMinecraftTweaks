@@ -1,5 +1,8 @@
 package com.blamejared.dmt.mixin;
 
+import com.blamejared.dmt.DamnedMinecraftTweaks;
+import com.blamejared.dmt.capability.ointment.OintmentCapability;
+import com.blamejared.dmt.item.ItemOintment;
 import com.robertx22.age_of_exile.database.data.currency.base.ICurrencyItemEffect;
 import com.robertx22.age_of_exile.database.data.currency.loc_reqs.LocReqContext;
 import com.robertx22.age_of_exile.mixin_methods.OnItemInteract;
@@ -19,6 +22,7 @@ import net.minecraft.inventory.container.ClickType;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.SoundEvents;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
@@ -83,7 +87,14 @@ public class SoulGearMixin {
                         success = true;
                     }
                 }
-            } else {
+            } else if (cursor.getItem() instanceof ItemOintment){
+                CompoundNBT toRead = cursor.getTagElement(DamnedMinecraftTweaks.NBT_STORAGE_KEY_GLOBAL);
+                OintmentCapability cap = new OintmentCapability();
+                cap.deserializeNBT(toRead);
+                GearItemData data = StackSaving.GEARS.loadFrom(stack);
+                success = true;
+            }
+            else {
                 ItemStack gem;
                 if (cursor.getItem() instanceof ICurrencyItemEffect) {
                     LocReqContext ctx = new LocReqContext(player, stack, cursor);

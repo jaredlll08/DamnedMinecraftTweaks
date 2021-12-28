@@ -32,7 +32,7 @@ else {
     throw new GradleException("Could not read version.properties!")
 }
 group = 'com.blamejared.damnedminecrafttweaks'
-archivesBaseName = 'DamnedMinecraftTweaks-1.16.5'
+archivesBaseName = 'DamnedMinecraftTweaks'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(8)
 

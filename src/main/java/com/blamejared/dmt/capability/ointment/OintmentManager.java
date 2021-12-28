@@ -34,6 +34,7 @@ public class OintmentManager {
         CapabilityManager.INSTANCE.register(IOintmentCapability.class, SimplePersistentCapabilityProvider.from(STATIC_CAPABILITY, () -> STATIC_CAPABILITY.getDefaultInstance()), OintmentCapability::new);
     }
     public static class SimplePersistentCapabilityProvider<C, S extends INBT> implements ICapabilityProvider, INBTSerializable<S>, Capability.IStorage<C> {
+        //Powered by Silk lol
         private final Capability<C> capability;
         private final LazyOptional<C> implementation;
         private final Direction direction;

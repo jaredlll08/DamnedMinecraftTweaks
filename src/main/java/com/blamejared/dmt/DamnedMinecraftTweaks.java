@@ -11,6 +11,7 @@ import com.blamejared.dmt.network.CommonProxy;
 import com.blamejared.dmt.network.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.Item;
+import net.minecraft.item.Rarity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.CapabilityManager;
@@ -23,27 +24,29 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
-@Mod("damnedminecrafttweaks")
+@Mod(DamnedMinecraftTweaks.MODID)
 public class DamnedMinecraftTweaks {
     public static CommonProxy PROXY;
     public static final String MODID = "damnedminecrafttweaks";
     public static final String NBT_STORAGE_KEY_GLOBAL = "DMCT";
 
     public static final DeferredRegister<Item> ITEM_REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
-    public static final RegistryObject<ItemOintment> OINTMENT_ITEM = ITEM_REGISTRY.register("item_ointment", () -> new ItemOintment(new Item.Properties()));
+    public static final RegistryObject<ItemOintment> OINTMENT_ITEM = ITEM_REGISTRY.register("item_ointment", () -> new ItemOintment(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
     
     public DamnedMinecraftTweaks() {
         PacketHandler.init();
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
-        MinecraftForge.EVENT_BUS.register(OintmentManager.class);
+
+        ITEM_REGISTRY.register(FMLJavaModLoadingContext.get().getModEventBus());
         PROXY = DistExecutor.safeRunForDist(() -> ClientProxy::new, () -> CommonProxy::new);
     }
     
     private void setup(final FMLCommonSetupEvent event) {
         MinecraftForge.EVENT_BUS.register(new AAEventHandler());
+        //MinecraftForge.EVENT_BUS.register(OintmentManager.class);
         OintmentManager.registerCap();
-        ITEM_REGISTRY.register(FMLJavaModLoadingContext.get().getModEventBus());
+
     }
 
     private void clientSetup(final FMLClientSetupEvent evnet) {

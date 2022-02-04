@@ -7,7 +7,7 @@ import net.minecraft.tags.ItemTags;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
-@Mixin(ModTags.Items.class)
+@Mixin(targets = "com/bettersmithing/init/ModTags$Items")
 public class SmithingMixin {
     /**
      * @author Witixin

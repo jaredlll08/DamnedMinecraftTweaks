@@ -1,7 +1,7 @@
 {
   "gui.damnedminecrafttweaks.toggleOverlay": "Toggle difficulty overlay",
   "dmctweaks.morphstone.name": "Morphstone",
-  "dmctweaks.tooltip.geartype": "",
+  "dmctweaks.tooltip.geartype": "Gear Type: ",
   "dmctweaks.tooltip.itemtier": "Item Tier: ",
   "dmctweaks.tooltip.rarityprefix": "Rarity: ",
   "dmctweaks.tooltip.levelreq": "Level Requirement: ",

@@ -11,12 +11,13 @@
     "StatSoulItemMixin",
     "StructureSpawnLocationMixin",
     "TooltipMethodMixin",
-    "TooltipUtilsMixin",
-    "ToroHealthMixin"
+    "ToroHealthMixin",
+    "MobHealthbarMixin"
   ],
   "client": [
     "GuiAtlasMixin",
     "GuiBookmarkButtonMixin",
-    "TileTextureMixin"
+    "TileTextureMixin",
+    "TooltipUtilsMixin"
   ]
 }

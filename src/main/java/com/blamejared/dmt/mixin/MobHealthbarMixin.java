@@ -22,8 +22,8 @@ public class MobHealthbarMixin {
 
     @ModifyVariable
             (
-                    method = "Lcom/minecraftserverzone/mobhealthbar/ForgeRegistryEvents;renderHpBar(Lnet/minecraftforge/client/event/RenderNameplateEvent;)V",
-                    at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/entity/LivingEntity;getMaxHealth()F"),
+                    method = "renderHpBar(Lnet/minecraftforge/client/event/RenderNameplateEvent;)V",
+                    at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/entity/LivingEntity;getMaxHealth()F", ordinal = 0),
                     ordinal = 0
             )
     private static float dmtweaksHealthFixerupper(float original){
@@ -31,8 +31,8 @@ public class MobHealthbarMixin {
     }
     @ModifyVariable
             (
-                    method = "Lcom/minecraftserverzone/mobhealthbar/ForgeRegistryEvents;renderHpBar(Lnet/minecraftforge/client/event/RenderNameplateEvent;)V",
-                    at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/entity/LivingEntity;getMaxHealth()F"),
+                    method = "renderHpBar(Lnet/minecraftforge/client/event/RenderNameplateEvent;)V",
+                    at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/entity/LivingEntity;getMaxHealth()F", ordinal = 0),
                     ordinal = 1
             )
     private static float dmtweaksMaxHealthFixerupper(float original){

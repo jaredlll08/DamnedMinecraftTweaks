@@ -7,7 +7,7 @@ buildscript {
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
-        classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7.+'
+        classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
@@ -37,10 +37,14 @@ archivesBaseName = 'DamnedMinecraftTweaks'
 java.toolchain.languageVersion = JavaLanguageVersion.of(8)
 
 minecraft {
-    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+    //accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
     mappings channel: 'official', version: '1.16.5'
     runs {
         client {
+            property 'forge.logging.console.level', 'debug'
+            property 'fml.earlyprogresswindow', 'false'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
             arg "-mixin.config=damnedminecrafttweaks.mixins.json"
             workingDirectory project.file('run')
             mods {
@@ -48,11 +52,6 @@ minecraft {
                     source sourceSets.main
                 }
             }
-            arg "-mixin.config=damnedminecrafttweaks.mixins.json"
-            // This makes dependencies with mixins work
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
-            // This makes dependencies with mixins work
         }
 
         server {
@@ -83,13 +82,14 @@ minecraft {
 
 mixin {
     add sourceSets.main, "damnedminecrafttweaks.refmap.json"
+    defaultObfuscationEnv "searge"
 }
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     maven {
-        url "https://cursemaven.com"
+        url "https://cfa2.cursemaven.com"
         content {
             includeGroup "curse.maven"
         }
@@ -130,7 +130,8 @@ dependencies {
     //(It's written in MCP where this mod uses MOJ maps)
     //You will have to utilize the modified refmap that will be provided
     //https://www.curseforge.com/minecraft/mc-mods/antique-atlas/files
-    implementation fg.deobf("ignore:antiqueatlas:6.0.1-forge-mc1.16.5")
+    //implementation fg.deobf("ignore:antiqueatlas:6.0.1-forge-mc1.16.5")
+    implementation fg.deobf("curse.maven:antiqueatlas-227795:3398190")
 
     //Mine and Slash
     implementation fg.deobf("curse.maven:divinemisisons-495974:3541524")

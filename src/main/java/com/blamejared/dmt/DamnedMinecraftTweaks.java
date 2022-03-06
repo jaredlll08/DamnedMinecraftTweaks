@@ -1,20 +1,17 @@
 package com.blamejared.dmt;
 
-import com.blamejared.dmt.capability.ointment.OintmentCapability;
-import com.blamejared.dmt.capability.ointment.OintmentManager;
 import com.blamejared.dmt.events.AAClientEventHandler;
 import com.blamejared.dmt.events.AAEventHandler;
+import com.blamejared.dmt.events.EventHandler;
 import com.blamejared.dmt.events.MSClientEventHandler;
 import com.blamejared.dmt.item.ItemOintment;
 import com.blamejared.dmt.network.ClientProxy;
 import com.blamejared.dmt.network.CommonProxy;
 import com.blamejared.dmt.network.PacketHandler;
-import net.minecraft.client.Minecraft;
 import net.minecraft.item.Item;
 import net.minecraft.item.Rarity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
@@ -44,14 +41,13 @@ public class DamnedMinecraftTweaks {
     
     private void setup(final FMLCommonSetupEvent event) {
         MinecraftForge.EVENT_BUS.register(new AAEventHandler());
-        //MinecraftForge.EVENT_BUS.register(OintmentManager.class);
-        OintmentManager.registerCap();
-
+        MinecraftForge.EVENT_BUS.register(new EventHandler());
     }
 
     private void clientSetup(final FMLClientSetupEvent evnet) {
         MinecraftForge.EVENT_BUS.register(new MSClientEventHandler());
         MinecraftForge.EVENT_BUS.register(new AAClientEventHandler());
+
     }
     public static ResourceLocation rl(String s){
         return new ResourceLocation(MODID, s);

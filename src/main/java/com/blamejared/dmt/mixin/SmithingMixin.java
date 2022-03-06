@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 public class SmithingMixin {
     /**
      * @author Witixin
+     * @reason stop Breaking datapacks horribly
      */
     @Overwrite(aliases = "tag", remap = false)
     private static ITag.INamedTag<Item> tag(String name) {
@@ -19,6 +20,7 @@ public class SmithingMixin {
 
     /**
      * @author Witixin
+     * @reason stop Breaking datapacks horribly
      */
     @Overwrite(aliases = "tag", remap = false)
     private static ITag.INamedTag<Item> tag(String namespace, String path) {

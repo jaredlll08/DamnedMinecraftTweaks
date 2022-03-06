@@ -1,7 +1,6 @@
 package com.blamejared.dmt.mixin;
 
 import com.blamejared.dmt.DamnedMinecraftTweaks;
-import com.blamejared.dmt.capability.ointment.OintmentCapability;
 import com.blamejared.dmt.item.ItemOintment;
 import com.robertx22.age_of_exile.database.data.currency.base.ICurrencyItemEffect;
 import com.robertx22.age_of_exile.database.data.currency.loc_reqs.LocReqContext;
@@ -78,7 +77,6 @@ public class SoulGearMixin {
                 GearItemData data2 = StackSaving.GEARS.loadFrom(cursor);
                 if (data != null) {
                     if (data.canInsertIntoStack(stack)) {
-                        //data.insertAsUnidentifiedOn(stack);
                         if (data2 == null) {
                             data.insertAsUnidentifiedOn(stack);
                         } else {
@@ -88,10 +86,11 @@ public class SoulGearMixin {
                     }
                 }
             } else if (cursor.getItem() instanceof ItemOintment){
-                CompoundNBT toRead = cursor.getTagElement(DamnedMinecraftTweaks.NBT_STORAGE_KEY_GLOBAL);
-                OintmentCapability cap = new OintmentCapability();
-                cap.deserializeNBT(toRead);
-                GearItemData data = StackSaving.GEARS.loadFrom(stack);
+                GearItemData gear = Gear.Load(stack);
+                if (gear == null) {
+                    return;
+                }
+                stack.getOrCreateTag().put(DamnedMinecraftTweaks.NBT_STORAGE_KEY_GLOBAL, cursor.getTag());
                 success = true;
             }
             else {

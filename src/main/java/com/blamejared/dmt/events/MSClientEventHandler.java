@@ -3,6 +3,11 @@ package com.blamejared.dmt.events;
 import com.robertx22.age_of_exile.capability.entity.EntityData;
 import com.robertx22.age_of_exile.database.data.currency.base.ICurrencyItemEffect;
 import com.robertx22.age_of_exile.database.data.gear_slots.GearSlot;
+import com.robertx22.age_of_exile.database.data.stats.Stat;
+import com.robertx22.age_of_exile.database.data.stats.datapacks.stats.CoreStat;
+import com.robertx22.age_of_exile.database.data.stats.types.core_stats.AllAttributes;
+import com.robertx22.age_of_exile.database.registry.ExileDB;
+import com.robertx22.age_of_exile.gui.screens.character_screen.CharacterScreen;
 import com.robertx22.age_of_exile.player_skills.ingredient.data.CraftingProcessData;
 import com.robertx22.age_of_exile.player_skills.ingredient.data.IngredientData;
 import com.robertx22.age_of_exile.player_skills.items.TieredItem;
@@ -22,6 +27,7 @@ import net.minecraft.util.text.IFormattableTextComponent;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -133,4 +139,5 @@ public class MSClientEventHandler {
             e.printStackTrace();
         }
     }
+
 }

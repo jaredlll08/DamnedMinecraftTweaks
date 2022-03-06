@@ -3,7 +3,14 @@ package com.blamejared.dmt.events;
 import com.blamejared.dmt.DamnedMinecraftTweaks;
 import com.blamejared.dmt.damage.ElementalDamageSource;
 import com.blamejared.dmt.item.ItemOintment;
+import com.ma.api.events.SpellCastEvent;
+import com.ma.api.spells.attributes.Attribute;
+import com.ma.spells.crafting.SpellRecipe;
+import com.robertx22.age_of_exile.database.data.stats.types.core_stats.AllAttributes;
+import com.robertx22.age_of_exile.database.registry.ExileDB;
+import com.robertx22.age_of_exile.uncommon.datasaving.Load;
 import com.robertx22.age_of_exile.uncommon.enumclasses.Elements;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.player.PlayerEntity;
@@ -29,7 +36,7 @@ public class EventHandler {
     }
 
     @SubscribeEvent
-    public static void damageEvent(final LivingHurtEvent event){
+    public void damageEvent(final LivingHurtEvent event){
         if (!event.getEntityLiving().level.isClientSide){
             if (event.getSource().getDirectEntity() instanceof PlayerEntity){
                 PlayerEntity player = (PlayerEntity) event.getSource().getDirectEntity();
@@ -40,11 +47,20 @@ public class EventHandler {
                     double elementalDamage = valueMap.get(strength) * damage;
                     ElementalDamageSource source = new ElementalDamageSource(element.dmgName, element);
                     source.apply(event.getEntityLiving(), elementalDamage, player, strength);
+                    System.out.println("Event fired");
                 }
             }
         }
     }
-
+    @SubscribeEvent
+    public void spellCast(final SpellCastEvent event){
+        SpellRecipe recipe = (SpellRecipe) event.getSpell();
+        recipe.iterateComponents((c) -> c.getContainedAttributes().forEach((attr) -> {
+            if (attr == Attribute.DAMAGE) {
+                c.setMultiplier(attr, c.getMultiplier(Attribute.DAMAGE) + Load.Unit(Minecraft.getInstance().player).getUnit().getCalculatedStat(ExileDB.Stats().get(AllAttributes.INT_ID)).getValue());
+            }
+        }));
+    }
 
     public static Elements getElement(String s){
         if (s != "NONE"){

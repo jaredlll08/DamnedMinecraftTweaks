@@ -12,7 +12,8 @@
     "StructureSpawnLocationMixin",
     "TooltipMethodMixin",
     "ToroHealthMixin",
-    "MobHealthbarMixin"
+    "MobHealthbarMixin",
+    "ArtificePlayerMagicMixin"
   ],
   "client": [
     "GuiAtlasMixin",

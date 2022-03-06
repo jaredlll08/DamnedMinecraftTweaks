@@ -5,6 +5,7 @@ import com.blamejared.dmt.damage.ElementalDamageSource;
 import com.blamejared.dmt.item.ItemOintment;
 import com.ma.api.events.SpellCastEvent;
 import com.ma.api.spells.attributes.Attribute;
+import com.ma.api.spells.base.ISpellDefinition;
 import com.ma.spells.crafting.SpellRecipe;
 import com.robertx22.age_of_exile.database.data.stats.types.core_stats.AllAttributes;
 import com.robertx22.age_of_exile.database.registry.ExileDB;
@@ -54,7 +55,7 @@ public class EventHandler {
     }
     @SubscribeEvent
     public void spellCast(final SpellCastEvent event){
-        SpellRecipe recipe = (SpellRecipe) event.getSpell();
+        ISpellDefinition recipe =  event.getSpell();
         recipe.iterateComponents((c) -> c.getContainedAttributes().forEach((attr) -> {
             if (attr == Attribute.DAMAGE) {
                 c.setMultiplier(attr, c.getMultiplier(Attribute.DAMAGE) + Load.Unit(Minecraft.getInstance().player).getUnit().getCalculatedStat(ExileDB.Stats().get(AllAttributes.INT_ID)).getValue());

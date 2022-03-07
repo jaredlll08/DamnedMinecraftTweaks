@@ -110,10 +110,6 @@ dependencies {
 
     implementation fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.16.5:7.1.2.454")
 
-    implementation fg.deobf("curse.maven:scaling-health-248027:3348269")
-
-    implementation fg.deobf("curse.maven:silent-lib-242998:3385768")
-
     implementation fg.deobf("curse.maven:torohealth-damage-indicators-245733:3144151")
 
     implementation fg.deobf("curse.maven:attributefix-280510:3232225")
@@ -121,6 +117,10 @@ dependencies {
     implementation fg.deobf("curse.maven:better-smithing-517972:3457290")
 
     implementation fg.deobf("curse.maven:mobhealthbar-559894:3612931")
+
+    implementation fg.deobf("curse.maven:classicbar-317642:3240083")
+
+    implementation fg.deobf("curse.maven:geckolib-388172:3629666")
 
     compileOnly fg.deobf("curse.maven:lycanitesmobs-224770:3516607")
 

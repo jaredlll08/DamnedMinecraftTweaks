@@ -58,7 +58,7 @@ public class EventHandler {
         ISpellDefinition recipe =  event.getSpell();
         recipe.iterateComponents((c) -> c.getContainedAttributes().forEach((attr) -> {
             if (attr == Attribute.DAMAGE) {
-                c.setMultiplier(attr, c.getMultiplier(Attribute.DAMAGE) + Load.Unit(Minecraft.getInstance().player).getUnit().getCalculatedStat(ExileDB.Stats().get(AllAttributes.INT_ID)).getValue());
+                c.setMultiplier(attr, c.getMultiplier(Attribute.DAMAGE) + (Load.Unit(Minecraft.getInstance().player).getUnit().getCalculatedStat(ExileDB.Stats().get(AllAttributes.INT_ID)).getValue() / 10));
             }
         }));
     }
